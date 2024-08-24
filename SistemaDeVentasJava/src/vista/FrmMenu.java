@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Dimension;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -8,6 +9,9 @@ import java.awt.Dimension;
  */
 public class FrmMenu extends javax.swing.JFrame {
 
+    //Para insertar un formulario (JInternalFrame)en él
+    public static JDesktopPane jDesktopPane_menu;
+    
     public FrmMenu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
@@ -16,6 +20,15 @@ public class FrmMenu extends javax.swing.JFrame {
         //Para que aparezca centrado
         this.setLocationRelativeTo(null);
         this.setTitle("Sistema de Ventas");
+        
+        this.setLayout(null);
+        jDesktopPane_menu = new JDesktopPane();
+        
+        
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;     
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;     
+        this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110)); //110 son los píxeles de la barra de tareas de un PC Windows
+        this.add(jDesktopPane_menu);
     }
 
     /**
@@ -145,6 +158,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_nuevaCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
         jMenuItem_nuevaCategoria.setText("Nueva Categoría");
         jMenuItem_nuevaCategoria.setPreferredSize(new java.awt.Dimension(200, 30));
+        jMenuItem_nuevaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevaCategoriaActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem_nuevaCategoria);
 
         jMenuItem_gestionarCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -255,6 +273,12 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMenuItem_reportesProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportesProductosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem_reportesProductosActionPerformed
+
+    private void jMenuItem_nuevaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevaCategoriaActionPerformed
+        InterCategoria interCategoria = new InterCategoria();
+        jDesktopPane_menu.add(interCategoria);
+        interCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_nuevaCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
