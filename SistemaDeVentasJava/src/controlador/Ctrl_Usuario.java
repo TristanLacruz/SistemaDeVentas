@@ -1,6 +1,5 @@
 package controlador;
 
-import com.mysql.jdbc.ResultSetRow;
 import conexion.Conexion;
 import modelo.Usuario;
 import java.sql.Connection;
