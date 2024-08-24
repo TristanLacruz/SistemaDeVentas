@@ -72,5 +72,7 @@ totalPagar double(10,2) not null,
 estado int(1) not null
 );
 
-
+-- vaciar tabla
+truncate table tb_categoria;
+select * from tb_categoria;
     
