@@ -14,7 +14,11 @@ import java.sql.ResultSet;
  */
 public class Ctrl_Categoria {
 
-    //Método para registrar categoría
+    /**
+     * Método para registrar una nueva categoría
+     * @param objeto
+     * @return 
+     */
     public boolean guardar(Categoria objeto) {
         boolean respuesta = false;
         Connection cn = conexion.Conexion.conectar();
@@ -40,7 +44,11 @@ public class Ctrl_Categoria {
         return respuesta;
     }
 
-    //metodo para consultar si existe la categoría
+    /**
+     * Método para consultar si ya existe una categoría
+     * @param categoria
+     * @return 
+     */
     public boolean existeCategoria(String categoria) {
         boolean respuesta = false;
         String sql = "select descripcion from tb_categoria where descripcion = '" + categoria + "';";
@@ -55,6 +63,57 @@ public class Ctrl_Categoria {
             }
         } catch (SQLException e) {
             System.out.println("Error al consultar categoria: " + e);
+        }
+        return respuesta;
+    }
+    
+    /**
+     * Método para actualizar una nueva categoría
+     * @param objeto
+     * @return 
+     */
+    public boolean actualizar(Categoria objeto, int idCategoria) {
+        boolean respuesta = false;
+        Connection cn = conexion.Conexion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement("update tb_categoria set descripcion=? where idCategoria = '" + idCategoria + "'");
+            consulta.setString(1, objeto.getDescripcion());
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar la categoría: " + e);
+        }
+        return respuesta;
+    }
+    
+    /**
+     * Método para eliminar una categoría
+     * @param idCategoria
+     * @return 
+     */
+    public boolean eliminar(int idCategoria) {
+        boolean respuesta = false;
+        Connection cn = conexion.Conexion.conectar();
+        try {
+
+            PreparedStatement consulta = cn.prepareStatement(
+                    "delete from tb_categoria where idCategoria = '" + idCategoria + "'");
+            consulta.executeUpdate();
+            
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar la categoría: " + e);
         }
         return respuesta;
     }

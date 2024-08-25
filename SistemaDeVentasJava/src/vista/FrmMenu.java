@@ -168,7 +168,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_gestionarCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenuItem_gestionarCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
         jMenuItem_gestionarCategorias.setText("Gestionar Categorías");
-        jMenuItem_gestionarCategorias.setPreferredSize(new java.awt.Dimension(200, 30));
+        jMenuItem_gestionarCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_gestionarCategoriasActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem_gestionarCategorias);
 
         jMenuBar1.add(jMenu4);
@@ -279,6 +283,12 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(interCategoria);
         interCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nuevaCategoriaActionPerformed
+
+    private void jMenuItem_gestionarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionarCategoriasActionPerformed
+        InterGestionarCategoria interGestionarCategoria = new InterGestionarCategoria();
+        jDesktopPane_menu.add(interGestionarCategoria);
+        interGestionarCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_gestionarCategoriasActionPerformed
 
     /**
      * @param args the command line arguments
