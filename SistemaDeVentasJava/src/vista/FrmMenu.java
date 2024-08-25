@@ -104,6 +104,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_nuevoProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-producto.png"))); // NOI18N
         jMenuItem_nuevoProducto.setText("Nuevo Producto");
         jMenuItem_nuevoProducto.setPreferredSize(new java.awt.Dimension(200, 30));
+        jMenuItem_nuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevoProductoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem_nuevoProducto);
 
         jMenuItem_gestionarProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -289,6 +294,12 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane_menu.add(interGestionarCategoria);
         interGestionarCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gestionarCategoriasActionPerformed
+
+    private void jMenuItem_nuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevoProductoActionPerformed
+        InterProducto interProducto = new InterProducto();
+        jDesktopPane_menu.add(interProducto);
+        interProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_nuevoProductoActionPerformed
 
     /**
      * @param args the command line arguments
